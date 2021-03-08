@@ -305,7 +305,7 @@ func (bl *Log) writeMsg(logLevel int, msg string, v ...interface{}) error {
 			}
 			bl.wg.Add(1)
 			go bl.startLogger()
-		} else if runtime.GOOS == "windows" {
+		} else if runtime.GOOS == "windows" || runtime.GOOS == "darwin" {
 			bl.level = LevelDebug
 			bl.setLogger(AdapterConsole)
 		}
